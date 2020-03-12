@@ -26,7 +26,7 @@ def longest_common_prefix(a, b):
 def submit():
     with open("pi.txt", "r") as infile:
         pi = infile.read().strip()
-    score = longest_common_prefix(pi, request.form["pi"])
+    score = longest_common_prefix(pi, "".join(request.form["pi"].split()))
     db.push_submission(request.form["user"], score)
     return render_template("submission.html", score=score)
 
